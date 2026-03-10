@@ -21,7 +21,7 @@ class Account(Base):
     __tablename__ = 'accounts'
     id = Column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     owner_name = Column(String(50))
-    balance = Column(Numeric(precision=12, scale=2))
+    balance = Column(Numeric(precision=12, scale=2),default=0)
     currency = Column(String(3),nullable=False)
     created_at = Column(DateTime, server_default=func.now())
 

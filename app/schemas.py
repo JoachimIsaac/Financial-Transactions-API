@@ -2,14 +2,15 @@ from decimal import Decimal
 from datetime import datetime
 from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
-from models import TransactionType,TransactionStatus
-
+from .models import TransactionType, TransactionStatus
+from decimal import Decimal
 
 
 class AccountBase(BaseModel):
     # Use Field to add validation like max length
     owner_name: str = Field(..., min_length=2, max_length=100, examples=["Alice Smith"])
     currency: str = Field(..., min_length=3, max_length=3, pattern="^[A-Z]{3}$")
+    balance: Decimal = Field(default=Decimal("0.00"), ge=0)
 
 
 class AccountCreate(AccountBase):

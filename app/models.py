@@ -3,7 +3,7 @@ import enum
 import uuid
 from sqlalchemy import  Column, String, Enum, Numeric, DateTime, func, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID as PG_UUID
-from database import Base
+from .database import Base
 
 
 
@@ -14,8 +14,8 @@ class TransactionStatus(enum.Enum):
 
 class TransactionType(enum.Enum):
     TRANSFER = "transfer"
-    DEPOSIT = "deposit"
-    WITHDRAWAL = "withdrawal"
+    # DEPOSIT = "deposit"
+    # WITHDRAWAL = "withdrawal"
 
 class Account(Base):
     __tablename__ = 'accounts'
